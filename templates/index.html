@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRM Lead Scoring</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>CRM Lead Scoring</h2>
+
+    <form method="POST">
+        <label>Lead Source</label>
+        <select name="lead_source">
+            <option>Website</option>
+            <option>Email</option>
+            <option>Referral</option>
+        </select>
+
+        <label>Calls Made</label>
+        <input type="number" name="calls" required>
+
+        <label>Emails Sent</label>
+        <input type="number" name="emails" required>
+
+        <label>Time on Site (mins)</label>
+        <input type="number" name="time" required>
+
+        <button type="submit">Submit Lead</button>
+    </form>
+
+    {% if prediction is not none %}
+        <h3>Prediction: {{ "Likely to Convert" if prediction == 1 else "Not Likely" }}</h3>
+        <h4>Conversion Probability: {{ probability }}%</h4>
+    {% endif %}
+</div>
+
+</body>
+</html>

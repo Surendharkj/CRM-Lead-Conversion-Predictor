@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRM Dashboard</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        th { background: #f0f0f0; }
+    </style>
+</head>
+<body>
+
+<h2>📊 CRM Leads Dashboard</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Source</th>
+        <th>Calls</th>
+        <th>Emails</th>
+        <th>Time</th>
+        <th>Prediction</th>
+        <th>Probability</th>
+    </tr>
+
+    {% for lead in leads %}
+    <tr>
+        <td>{{ lead[0] }}</td>
+        <td>{{ lead[1] }}</td>
+        <td>{{ lead[2] }}</td>
+        <td>{{ lead[3] }}</td>
+        <td>{{ lead[4] }}</td>
+        <td>
+            {% if lead[5] == 1 %}
+                Likely
+            {% else %}
+                Unlikely
+            {% endif %}
+        </td>
+        <td>{{ lead[6] }}%</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="/">⬅ Back to Prediction</a>
+
+</body>
+</html>
